@@ -24,12 +24,13 @@ body {
   padding: 1rem 5%;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 10;
+  flex-wrap: wrap; /* allow wrapping on small screens */
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.5rem; /* space between logo & brand name */
 }
 
 .logo {
@@ -49,6 +50,13 @@ body {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  overflow-x: auto; /* allow horizontal scroll on small screens */
+  flex-wrap: nowrap;
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .nav-links a {
@@ -56,6 +64,7 @@ body {
   color: #222;
   font-weight: 400;
   transition: color 0.3s ease;
+  white-space: nowrap; /* prevent wrapping */
 }
 
 .nav-links a:hover {
@@ -70,11 +79,29 @@ body {
   transition: background 0.3s ease;
   font-weight: 600;
   text-decoration: none;
+  flex-shrink: 0; /* prevent shrinking on mobile */
 }
 
 .btn-nav:hover {
   background: #006647;
   text-decoration: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 3%;
+    gap: 0.5rem;
+  }
+
+  .nav-links {
+    margin: 0.5rem 0;
+    gap: 1rem;
+  }
+
+  .btn-nav {
+    margin-top: 0.5rem;
+  }
 }
 
 /* Hero Section */
